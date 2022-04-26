@@ -1,4 +1,7 @@
-import { initializeApp } from "firebase/app";
+import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
+import "firebase/compat/firestore";
+
 import {
   GoogleAuthProvider,
   getAuth,
@@ -26,9 +29,13 @@ const firebaseConfig = {
   appId: "1:308821994962:web:4dc212fb91f49b7294ac0b",
 };
 
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
+const auth = getAuth(firebaseApp);
+const db = getFirestore(firebaseApp);
+
+const projectStorage = firebase.storage();
+const projectFirestore = firebase.firestore();
+const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 const googleProvider = new GoogleAuthProvider();
 
@@ -94,6 +101,9 @@ const logout = () => {
 export {
   auth,
   db,
+  projectStorage,
+  projectFirestore,
+  timestamp,
   signInWithGoogle,
   logInWithEmailAndPassword,
   registerWithEmailAndPassword,

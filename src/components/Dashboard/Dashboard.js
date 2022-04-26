@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
-import { auth, db, logout } from "./firebase";
+import { auth, db, logout } from "../../firebase/firebase";
 import { query, collection, getDocs, where } from "firebase/firestore";
+import Title from "../Title";
+import UploadForm from "../UploadForm";
+import ImageGrid from "../ImageGrid";
+import Modal from "../Modal";
 
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
@@ -30,8 +34,24 @@ function Dashboard() {
     fetchUserName();
   }, [user, loading]);
 
+  const [selectedImg, setSelectedImg] = useState(null);
+  const [selectedDocId, setSelectedDocId] = useState(null);
+
   return (
-    <div className="dashboard">
+    <div>
+      <Title />
+      <UploadForm />
+      <ImageGrid
+        setSelectedImg={setSelectedImg}
+        setSelectedDocId={setSelectedDocId}
+      />
+      {selectedImg && (
+        <Modal
+          selectedImg={selectedImg}
+          setSelectedImg={setSelectedImg}
+          selectedDocId={selectedDocId}
+        />
+      )}
       <div className="dashboard__container">
         Logged in as
         <div>{name}</div>
