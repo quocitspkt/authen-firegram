@@ -1,6 +1,4 @@
 import { initializeApp } from "firebase/app";
-import "firebase/storage";
-import "firebase/firestore";
 import {
   GoogleAuthProvider,
   getAuth,
@@ -18,10 +16,7 @@ import {
   where,
   addDoc,
 } from "firebase/firestore";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAMOV48ZS7KigGCw4jT3hzBzusfbJFDPxQ",
   authDomain: "fir-auth-firegram.firebaseapp.com",
@@ -30,13 +25,6 @@ const firebaseConfig = {
   messagingSenderId: "308821994962",
   appId: "1:308821994962:web:4dc212fb91f49b7294ac0b",
 };
-
-// Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-
-// const projectStorage = firebase.storage();
-// const projectFirestore = firebase.firestore();
-// const timestamp = firebase.firestore.FieldValue.serverTimestamp;
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);

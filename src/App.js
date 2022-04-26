@@ -1,19 +1,13 @@
-import Titile from "./components/Title";
-import UploadForm from "./components/UploadForm";
-import ImageGrid from "./components/ImageGrid";
-import { useState } from "react";
-import Modal from "./components/Modal";
+import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Login from "./Login/Login";
-import Register from "./Register/Register";
-import Reset from "./Reset/Reset";
-import Dashboard from "./Dashboard/Dashboard";
+import Login from "./Login";
+import Register from "./Register";
+import Reset from "./Reset";
+import Dashboard from "./Dashboard";
 
 function App() {
-  const [selectedImg, setSelectedImg] = useState(null);
-  const [selectedDocId, setSelectedDocId] = useState(null);
   return (
-    <div className="App">
+    <div className="app">
       <Router>
         <Routes>
           <Route exact path="/" element={<Login />} />
@@ -22,19 +16,6 @@ function App() {
           <Route exact path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Router>
-      {/* <Titile />
-      <UploadForm />
-      <ImageGrid
-        setSelectedImg={setSelectedImg}
-        setSelectedDocId={setSelectedDocId}
-      />
-      {selectedImg && (
-        <Modal
-          selectedImg={selectedImg}
-          setSelectedImg={setSelectedImg}
-          selectedDocId={selectedDocId}
-        />
-      )} */}
     </div>
   );
 }
